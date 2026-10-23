@@ -83,6 +83,7 @@ https://li-public.fmcsa.dot.gov (search USDOT 2576898 → "Active/Pending Insura
 | 8 | Marketing copy ("Why choose us", About principles) | Written as an approach, not guarantees. Owner to confirm it reflects actual practice. |
 | 9 | Privacy policy provider names and retention period | See `src/data/privacy.ts`. Needs owner and legal review. |
 | 10 | Homepage registration strip (USDOT / MC / Interstate / Hughson cards) | Removed and then restored at the owner's request on 2026-10-23. Shown on the homepage below the hero. |
+| 11 | Owner-supplied About copy (2026-10-23) | Added to the About page and homepage About section. Owner claims taken as given: drop-and-hook trailer service, "modern" power units, local work, dry freight. Adjusted because they conflict with FMCSA data: (a) "OOS rates well below national averages across vehicle, driver, and hazardous materials" — SAFER shows 2 vehicle / 2 driver inspections, 0 OOS (national avg 22.26% / 6.67% as of 09/25/2026), but **0 hazmat inspections** and census `hm_ind = N`, so the hazmat claim was dropped and the claim restated as zero OOS orders; (b) "regulated cargo" → "time-sensitive loads" (implies hazmat); (c) "long-haul interstate lanes" → "interstate lanes", because MCS-150 (10/07/2025) reports all 4 drivers interstate **within** 100 air miles, 0 beyond. Restore the original wording only if the owner confirms and the FMCSA record is updated. |
 
 ## 6. Keyword themes (for content, not keyword stuffing)
 

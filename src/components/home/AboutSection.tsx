@@ -24,9 +24,9 @@ export function AboutSection() {
           </h2>
           <div className="mt-6 space-y-4 text-lg text-muted">
             <p>
-              {company.displayName} is a for-hire motor carrier registered with the Federal Motor Carrier Safety
-              Administration for interstate operation. Our carrier record lists general freight and intermodal
-              containers as the cargo we haul.
+              {company.displayName} delivers dependable local and interstate freight solutions built on safety,
+              precision and compliance. With a dedicated fleet of modern power units, we specialize in drop-and-hook
+              trailer services that keep supply chains moving without costly dock delays.
             </p>
             <p>
               We keep the process straightforward: you share your shipment details, we review them, and we talk

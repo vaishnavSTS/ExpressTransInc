@@ -50,19 +50,25 @@ export function AboutPage() {
         <Container className="grid items-start gap-12 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
           <div>
             <SectionHeading id="overview-heading" eyebrow="Company overview" title="Who we are" />
+            {/* Owner-supplied copy (Oct 2026), adjusted where it went beyond the FMCSA record:
+                see docs/company-research.md §5. */}
             <div className="mt-6 space-y-4 text-lg text-muted">
               <p>
-                {company.displayName} is a trucking company headquartered in {company.address.city}, a city in
-                Stanislaus County in California&rsquo;s Central Valley. We are registered with the Federal Motor
-                Carrier Safety Administration (FMCSA) as an interstate, for-hire motor carrier of property.
+                At {company.displayName}, we deliver dependable local and interstate freight solutions built on a
+                foundation of safety, precision and compliance. Operating a dedicated fleet of modern power units, we
+                specialize in seamless drop-and-hook trailer services designed to keep supply chains moving without
+                costly dock delays.
               </p>
               <p>
-                Our FMCSA record lists two cargo classifications: general freight and intermodal containers. Those
-                are the shipments we focus on, and they are what we can talk with you about in detail.
+                Our commitment to operational excellence shows in our safety record. Our roadside vehicle and driver
+                inspections over the past 24 months have resulted in zero out-of-service orders, well below the
+                national averages published by FMCSA (as of {fmcsaRecordAsOf}). Whether managing standard dry freight
+                or time-sensitive loads, we approach every haul with strict adherence to safety standards and total
+                accountability.
               </p>
               <p>
-                If you are evaluating carriers, our registration details are below, and you can confirm them against
-                the official FMCSA record at any time.
+                From local and regional runs to interstate lanes, {company.displayName} provides the agility of an
+                independent carrier with the reliability and standards of an industry leader.
               </p>
             </div>
           </div>
