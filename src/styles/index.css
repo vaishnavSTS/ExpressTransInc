@@ -1,0 +1,93 @@
+@import '@fontsource/barlow/latin-400.css';
+@import '@fontsource/barlow/latin-500.css';
+@import '@fontsource/barlow/latin-600.css';
+@import '@fontsource/barlow/latin-700.css';
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Barlow', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+
+  /* Brand tokens (starting palette from the project spec; no official brand identity found). */
+  --color-navy-950: #0b1929;
+  --color-navy-900: #10243a;
+  --color-navy-800: #1a334f;
+  --color-slate-brand: #344b62;
+  --color-accent: #f28c28;
+  --color-accent-600: #e07a14;
+  /* Darker orange for text on light backgrounds (meets WCAG AA contrast). */
+  --color-accent-ink: #9a4a07;
+  --color-ink: #1f2933;
+  --color-muted: #52606d;
+  --color-line: #e2e8f0;
+  --color-surface: #f5f7fa;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-bold tracking-tight text-navy-900;
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+
+  /* Visible, consistent keyboard focus everywhere. */
+  :focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Leave room for the sticky header when jumping to in-page anchors. */
+  [id] {
+    scroll-margin-top: 6rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply text-sm font-semibold tracking-[0.14em] text-accent-ink uppercase;
+  }
+
+  .prose-legal h2 {
+    @apply mt-10 mb-3 text-2xl;
+  }
+  .prose-legal h3 {
+    @apply mt-6 mb-2 text-lg;
+  }
+  .prose-legal p,
+  .prose-legal ul {
+    @apply mb-4 text-ink;
+  }
+  .prose-legal ul {
+    @apply list-disc space-y-1 pl-6;
+  }
+  .prose-legal a {
+    @apply font-medium text-navy-900 underline underline-offset-2 hover:text-accent-ink;
+  }
+}
