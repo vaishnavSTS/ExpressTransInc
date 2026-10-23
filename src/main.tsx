@@ -2,6 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot, hydrateRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router';
 import { App } from './App';
+import { basePath } from './config/site';
 import './styles/index.css';
 
 const container = document.getElementById('root');
@@ -9,7 +10,7 @@ if (!container) throw new Error('Root element #root not found');
 
 const app = (
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={basePath || '/'}>
       <App />
     </BrowserRouter>
   </StrictMode>

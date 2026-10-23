@@ -15,9 +15,12 @@ function staticHostPreview(): Plugin {
     name: 'static-host-preview',
     configurePreviewServer(server) {
       const outDir = path.resolve(server.config.root, server.config.build.outDir);
+      const base = server.config.base.replace(/\/+$/, '');
       server.middlewares.use((req, res, next) => {
         const url = new URL(req.url ?? '/', 'http://localhost');
-        const pathname = decodeURIComponent(url.pathname);
+        const fullPath = decodeURIComponent(url.pathname);
+        if (base && fullPath !== base && !fullPath.startsWith(`${base}/`)) return next();
+        const pathname = fullPath.slice(base.length) || '/';
         if (req.method !== 'GET' || pathname === '/') return next();
         if (path.extname(pathname)) {
           const file = path.join(outDir, pathname);
@@ -28,7 +31,7 @@ function staticHostPreview(): Plugin {
           if (page.startsWith(outDir) && existsSync(page)) {
             if (clean === pathname) return next();
             res.statusCode = 301; // canonical URLs have no trailing slash
-            res.setHeader('Location', clean + url.search);
+            res.setHeader('Location', base + clean + url.search);
             return res.end();
           }
         }
@@ -40,7 +43,14 @@ function staticHostPreview(): Plugin {
   };
 }
 
+/**
+ * URL prefix the site is served under, e.g. `/ExpressTransInc/` for a GitHub Pages project
+ * site. Defaults to `/` (site at the root of its domain). Set via the BASE_PATH env var.
+ */
+const basePath = `/${(process.env.BASE_PATH ?? '').trim().replace(/^\/+|\/+$/g, '')}/`.replace('//', '/');
+
 export default defineConfig({
+  base: basePath,
   plugins: [react(), tailwindcss(), staticHostPreview()],
   test: {
     environment: 'jsdom',

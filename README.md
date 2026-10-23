@@ -70,6 +70,15 @@ The host must:
 Netlify and Cloudflare Pages do this by default. Vercel needs `"cleanUrls": true` in
 `vercel.json`. On Apache or nginx, add matching rewrite rules.
 
+### GitHub Pages
+
+`.github/workflows/deploy.yml` builds and deploys on every push to `main` (set
+**Settings → Pages → Source** to **GitHub Actions**). It sets the build-only `BASE_PATH` variable
+automatically: `/ExpressTransInc` when served from `vaishnavsts.github.io/ExpressTransInc/`, and
+nothing once a custom domain is configured, so links, images and assets always resolve.
+`VITE_SITE_URL` defaults to the Pages URL unless you set it as a repository variable.
+GitHub Pages does not redirect `/about/` to `/about`; it shows the 404 page instead.
+
 Production build example:
 
 ```bash

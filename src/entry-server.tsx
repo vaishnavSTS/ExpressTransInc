@@ -6,7 +6,7 @@ import { StrictMode } from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router';
 import { App } from './App';
-import { absoluteUrl, siteConfig } from './config/site';
+import { absoluteUrl, basePath, siteConfig } from './config/site';
 import { indexableRoutes, routes } from './data/routes';
 import { buildHead, renderHeadToString } from './lib/head';
 
@@ -24,7 +24,7 @@ const outputFile = (path: string) => (path === '/' ? 'index.html' : `${path.slic
 export function renderPage(path: string, file: string, route = routes.notFound): PrerenderPage {
   const html = renderToString(
     <StrictMode>
-      <StaticRouter location={path}>
+      <StaticRouter basename={basePath || '/'} location={basePath + path}>
         <App />
       </StaticRouter>
     </StrictMode>,

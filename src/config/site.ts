@@ -3,7 +3,7 @@
  * See .env.example. These values are public; never put secrets in VITE_* variables.
  */
 export interface SiteConfig {
-  /** Verified production origin without a trailing slash, or null if not configured. */
+  /** Verified production URL (origin plus any base path) without a trailing slash, or null. */
   siteUrl: string | null;
   /** True only when indexing is explicitly enabled AND a production URL is set. */
   allowIndexing: boolean;
@@ -29,6 +29,9 @@ export const siteConfig: SiteConfig = {
   allowIndexing: siteUrl !== null && import.meta.env.VITE_ALLOW_INDEXING === 'true',
   quoteEndpoint: secureEndpoint(clean(import.meta.env.VITE_QUOTE_ENDPOINT)),
 };
+
+/** URL prefix the site is served under, without a trailing slash ('' at a domain root). */
+export const basePath = import.meta.env.BASE_URL.replace(/\/+$/, '');
 
 /** Absolute URL for a path, or null when the production domain is not configured. */
 export const absoluteUrl = (path: string): string | null =>
